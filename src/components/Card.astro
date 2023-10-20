@@ -1,42 +1,33 @@
 ---
 import { Image } from 'astro:assets';
-const { data, bgColor, textColor } = Astro.props;
-import image from '../assets/image-daniel.jpg';
+const { data } = Astro.props;
+const bgColor = data.bgColor;
+const textLight = data.textLight;
+const textDark = data.textDark;
 ---
 
 <article>
     <header>
-        <Image src={image} alt="profile picture" />
+        <Image src={data.profileImage} alt="profile picture" />
         <div class="wrap-text">
-            <p class="name">Matias Luduena</p>
-            <p class="graduate">Verified Graduate</p>
+            <p class="name">{data.name}</p>
+            <p class="graduate">{data.graduate}</p>
         </div>
     </header>
-    <h2>
-        I received a job offer mid-course, and the subjects I learned were
-        current, if not more so, in the company I joined. I honestly feel I got
-        every penny’s worth.
-    </h2>
-    <p class="body-text">
-        “ I was an EMT for many years before I joined the bootcamp. I’ve been
-        looking to make a transition and have heard some people who had an
-        amazing experience here. I signed up for the free intro course and found
-        it incredibly fun! I enrolled shortly thereafter. The next 12 weeks was
-        the best - and most grueling - time of my life. Since completing the
-        course, I’ve successfully switched careers, working as a Software
-        Engineer at a VR startup. ”
-    </p>
+    <h2>{data.title}</h2>
+    <p class="body-text">{data.body}</p>
 </article>
 
-<style>
+<style define:vars={{ bgColor, textLight, textDark }}>
     article {
-        background-color: rgb(160, 89, 227);
+        background-color: var(--bgColor);
         color: white;
         padding: 2rem;
         border-radius: 10px;
         display: flex;
         flex-direction: column;
         gap: 1.3rem;
+        box-shadow: 0px 10px 40px 0px rgba(0, 0, 0, 0.1);
     }
 
     header {
@@ -49,23 +40,25 @@ import image from '../assets/image-daniel.jpg';
         border-radius: 50%;
         width: 40px;
         height: 40px;
-        border: 2px solid rgb(141, 47, 141);
+        border: 2px solid var(--violet-clr);
     }
 
     .name {
-        color: var(--light-blue);
+        color: var(--textLight);
         font-size: 16px;
     }
 
     .graduate {
-        color: var(--light-gray);
+        color: var(--textLight);
+        opacity: 0.5;
     }
 
     h2 {
-        color: var(--light-blue);
+        color: var(--textLight);
     }
 
     .body-text {
-        color: var(--light-gray);
+        color: var(--textLight);
+        opacity: 0.7;
     }
 </style>

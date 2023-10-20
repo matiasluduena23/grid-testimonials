@@ -11,5 +11,8 @@ body:
     could ever have. In fact, I’ve often referred to it during interviews as an example of my developent
     experience. It certainly helped me land a job as a full-stack developer after receiving multiple offers.
     100% recommend! ”
-image:
+profileImage: '../../assets/image-kira.jpg'
+bgColor: hsl(0, 0%, 100%)
+textLight: hsl(217, 19%, 35%)
+textDark: hsl(219, 29%, 14%)
 ---

@@ -1,7 +1,69 @@
 ---
 import Card from './Card.astro';
+import { getCollection } from 'astro:content';
+const allTestimonials = await getCollection('testimonial');
 ---
 
 <main>
-    <Card />
+    {allTestimonials.map((testimonial) => <Card data={testimonial.data} />)}
 </main>
+
+<style is:global>
+    main {
+        display: grid;
+        gap: 2rem;
+    }
+
+    main article:first-child {
+        background-image: url('../assets/bg-pattern-quotation.svg');
+        background-repeat: no-repeat;
+        background-position: top right 20%;
+    }
+
+    @media (min-width: 768px) {
+        main {
+            grid-template-areas:
+                'card-1 card-1'
+                'card-2 card-3'
+                'card-4 card-4'
+                'card-5 card-5';
+        }
+        main article:first-child {
+            grid-area: card-1;
+        }
+        main article:nth-child(2) {
+            grid-area: card-2;
+        }
+        main article:nth-child(3) {
+            grid-area: card-3;
+        }
+        main article:nth-child(4) {
+            grid-area: card-4;
+        }
+        main article:nth-child(5) {
+            grid-area: card-5;
+        }
+    }
+
+    @media (min-width: 992px) {
+        main {
+            grid-template-areas:
+                'card-1 card-1 card-2'
+                ' card-3 card-4 card-4'
+                'card-5 card-5 card-5';
+        }
+    }
+
+    @media (min-width: 1200px) {
+        main {
+            grid-template-areas:
+                'card-1 card-1 card-2 card-5'
+                'card-3 card-4 card-4 card-5';
+        }
+        main article:nth-child(5),
+        main article:nth-child(2),
+        main article:nth-child(3) {
+            max-width: 260px;
+        }
+    }
+</style>

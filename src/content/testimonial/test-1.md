@@ -10,5 +10,8 @@ body:
     for the free intro course and found it incredibly fun! I enrolled shortly thereafter.
     The next 12 weeks was the best - and most grueling - time of my life. Since completing
     the course, I’ve successfully switched careers, working as a Software Engineer at a VR startup. ”
-image:
+profileImage: '../../assets/image-daniel.jpg'
+bgColor: hsl(263, 55%, 52%)
+textLight: hsl(210, 46%, 95%)
+textDark: hsl(0, 0%, 81%)
 ---

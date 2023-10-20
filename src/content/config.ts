@@ -4,11 +4,17 @@ import { z, defineCollection } from 'astro:content';
 // 2. Define a `type` and `schema` for each collection
 const testimonial = defineCollection({
   type: 'content', // v2.5.0 and later
-  schema: z.object({
+  schema:({image})=> z.object({
     name: z.string(),
     graduate: z.string(),
     title: z.string(),
     body: z.string(),
+    profileImage: image().refine((img) => img.width >= 10 , {
+      message: "Cover image must be at least 10 pixels wide!",
+    }),
+    bgColor: z.string(),
+    textLight: z.string(),
+    textDark: z.string(),
   }),
 });
 
